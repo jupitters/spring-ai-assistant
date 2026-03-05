@@ -18,13 +18,13 @@ public class GenAIController {
         return chatService.getResponse(prompt);
     }
 
-    publci String getResponseOptions(String prompt) {
+    public String getResponseOptions(String prompt) {
         return ChatModel.call(
                 new Prompt(
                         "Generate the names of 5 famous pirates",
                         OpenAiChatOptions.builder()
-                                .withModel("gpt-4-o")
-                                .withTemperature(0.4)
+                                .model("gpt-4-o")
+                                .temperature(0.4)
                                 .build()
                 )
         );

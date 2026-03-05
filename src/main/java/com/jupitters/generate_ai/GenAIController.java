@@ -17,4 +17,8 @@ public class GenAIController {
     public String getResponse(@RequestParam String prompt){
         return chatService.getResponse(prompt);
     }
+
+    public String getResponseOptions(@RequestParam String prompt){
+        return chatService.getResponseOptions(prompt);
+    }
 }

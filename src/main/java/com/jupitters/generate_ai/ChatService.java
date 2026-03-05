@@ -2,6 +2,7 @@ package com.jupitters.generate_ai;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.model.ChatModel;
+import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class ChatService {
     }
 
     public String getResponseOptions(String prompt) {
-        return chatModel.call(
+        ChatResponse response = chatModel.call(
                 new Prompt(
                         "Generate the names of 5 famous pirates",
                         OpenAiChatOptions.builder()
@@ -25,5 +26,7 @@ public class ChatService {
                                 .build()
                 )
         );
+
+        return response.getResult().getOutput().toString();
     }
 }

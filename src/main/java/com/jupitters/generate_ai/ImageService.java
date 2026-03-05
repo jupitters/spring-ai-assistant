@@ -12,10 +12,8 @@ public class ImageService{
     private final OpenAiImageModel openAiImageModel;
 
     public ImageResponse generateImage(String prompt){
-        ImageResponse imageResponse = openAiImageModel.call(
+        return openAiImageModel.call(
                 new ImagePrompt(prompt)
         );
-
-        return imageResponse;
     }
 }

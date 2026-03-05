@@ -11,7 +11,7 @@ public class GenAIController {
     private final ChatService chatService;
 
     @GetMapping("/ask-ai")
-    public String getReseponse(@RequestParam  String prompt){
+    public String getResponse(@RequestParam String prompt){
         return chatService.getResponse(prompt);
     }
 }

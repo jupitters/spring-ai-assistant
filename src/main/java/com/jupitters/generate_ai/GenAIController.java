@@ -17,16 +17,4 @@ public class GenAIController {
     public String getResponse(@RequestParam String prompt){
         return chatService.getResponse(prompt);
     }
-
-    public String getResponseOptions(String prompt) {
-        return ChatModel.call(
-                new Prompt(
-                        "Generate the names of 5 famous pirates",
-                        OpenAiChatOptions.builder()
-                                .model("gpt-4-o")
-                                .temperature(0.4)
-                                .build()
-                )
-        );
-    }
 }

@@ -3,10 +3,13 @@ package com.jupitters.generate_ai;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.image.ImageResponse;
 import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Objects;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,6 +28,7 @@ public class GenAIController {
     }
 
     public String generateImage(@RequestParam String prompt){
-        return imageService.generateImage(prompt);
+        ImageResponse response = imageService.generateImage(prompt);
+        return  Objects.requireNonNull(response.getResult()).getOutput().getUrl();
     }
 }

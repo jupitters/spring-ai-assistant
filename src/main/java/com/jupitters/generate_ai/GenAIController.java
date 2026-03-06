@@ -29,9 +29,9 @@ public class GenAIController {
         return chatService.getResponseOptions(prompt);
     }
 
-    public String generateImage(HttpServletResponse response, @RequestParam String prompt) throws IOException {
+    public void generateImage(HttpServletResponse response, @RequestParam String prompt) throws IOException {
         ImageResponse image = imageService.generateImage(prompt);
-        String url = Objects.requireNonNull(image.getResult()).getOutput().getUrl();
-        return response.sendRedirect(url);
+
+        response.sendRedirect(Objects.requireNonNull(image.getResult()).getOutput().getUrl());
     }
 }

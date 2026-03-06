@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ChatService {
-    @Qualifier("openAiChatModel")
     private final ChatModel chatModel;
 
     public String getResponse(String prompt) {

@@ -32,6 +32,8 @@ public class GenAIController {
     public void generateImage(HttpServletResponse response, @RequestParam String prompt) throws IOException {
         ImageResponse image = imageService.generateImage(prompt);
 
-        response.sendRedirect(Objects.requireNonNull(image.getResult()).getOutput().getUrl());
+        String url = Objects.requireNonNull(image.getResult()).getOutput().getUrl();
+
+        response.sendRedirect(url);
     }
 }

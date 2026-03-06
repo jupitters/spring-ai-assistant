@@ -19,7 +19,7 @@ public class ChatService {
     public String getResponseOptions(String prompt) {
         ChatResponse response = chatModel.call(
                 new Prompt(
-                        "Generate the names of 5 famous pirates",
+                        prompt,
                         OpenAiChatOptions.builder()
                                 .model("llama-3.3-70b-versatile")
                                 .temperature(0.4)

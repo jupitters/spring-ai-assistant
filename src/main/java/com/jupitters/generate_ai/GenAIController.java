@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class GenAIController {
     private final ChatService chatService;
+    private final ImageService imageService;
 
     @GetMapping("/ask-ai")
     public String getResponse(@RequestParam String prompt){
@@ -21,5 +22,9 @@ public class GenAIController {
     @GetMapping("/ask-ai-options")
     public String getResponseOptions(@RequestParam String prompt){
         return chatService.getResponseOptions(prompt);
+    }
+
+    public String generateImage(@RequestParam String prompt){
+        return imageService.generateImage(prompt);
     }
 }

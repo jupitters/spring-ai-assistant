@@ -21,7 +21,7 @@ public class ChatService {
                 new Prompt(
                         "Generate the names of 5 famous pirates",
                         OpenAiChatOptions.builder()
-                                .model("llama3-8b-8192")
+                                .model("llama-3.3-70b-versatile")
                                 .temperature(0.4)
                                 .build()
                 )

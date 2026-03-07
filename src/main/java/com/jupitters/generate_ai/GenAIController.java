@@ -49,4 +49,8 @@ public class GenAIController {
                 .map(result -> result.getOutput().getUrl())
                 .toList();
     }
+
+    public List<String> recipeCreator(){
+        return List.of();
+    }
 }

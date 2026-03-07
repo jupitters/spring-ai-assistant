@@ -2,17 +2,13 @@ package com.jupitters.generate_ai;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.image.ImageResponse;
-import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
-import java.util.Objects;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -40,10 +36,10 @@ public class GenAIController {
 //    }
 
     @GetMapping("/generate-image")
-    public void generateImage(HttpServletResponse response, @RequestParam String prompt) throws IOException {
-        ImageResponse image = imageService.generateImage(prompt);
+    public List<String> generateImage(HttpServletResponse response, @RequestParam String prompt) throws IOException {
+        ImageResponse images = imageService.generateImage(prompt);
 
-        image.getResults()
+        return images.getResults()
                 .stream()
                 .map(result -> result.getOutput().getUrl())
                 .toList();

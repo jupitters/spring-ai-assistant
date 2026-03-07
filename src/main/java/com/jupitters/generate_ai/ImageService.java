@@ -16,6 +16,7 @@ public class ImageService{
         return openAiImageModel.call(
                 new ImagePrompt(prompt,
                         OpenAiImageOptions.builder()
+                                //.model("dall-e-2")
                                 .quality("hd")
                                 .N(4)
                                 .height(1024)

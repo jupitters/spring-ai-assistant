@@ -12,15 +12,15 @@ import org.springframework.stereotype.Service;
 public class ImageService{
     private final OpenAiImageModel openAiImageModel;
 
-    public ImageResponse generateImage(String prompt, String quality, String n, String width, String height){
+    public ImageResponse generateImage(String prompt, String quality, int n, int width, int height){
         return openAiImageModel.call(
                 new ImagePrompt(prompt,
                         OpenAiImageOptions.builder()
                                 //.model("dall-e-2")
                                 .quality("hd")
-                                .N(4)
-                                .height(1024)
-                                .width(1024)
+                                .N(n)
+                                .height(width)
+                                .width(height)
                                 .build())
         );
     }

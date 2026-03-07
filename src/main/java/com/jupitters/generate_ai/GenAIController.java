@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,12 +30,22 @@ public class GenAIController {
         return chatService.getResponseOptions(prompt);
     }
 
+//    @GetMapping("/generate-image")
+//    public void generateImage(HttpServletResponse response, @RequestParam String prompt) throws IOException {
+//        ImageResponse image = imageService.generateImage(prompt);
+//
+//        String url = Objects.requireNonNull(image.getResult()).getOutput().getUrl();
+//
+//        response.sendRedirect(url);
+//    }
+
     @GetMapping("/generate-image")
     public void generateImage(HttpServletResponse response, @RequestParam String prompt) throws IOException {
         ImageResponse image = imageService.generateImage(prompt);
 
-        String url = Objects.requireNonNull(image.getResult()).getOutput().getUrl();
-
-        response.sendRedirect(url);
+        image.getResults()
+                .stream()
+                .map(result -> result.getOutput().getUrl())
+                .toList();
     }
 }

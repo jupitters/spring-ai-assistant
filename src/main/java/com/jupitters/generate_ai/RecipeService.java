@@ -7,6 +7,7 @@ import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +30,6 @@ public class RecipeService {
         );
 
         Prompt prompt = promptTemplate.create(params);
-        chatModel.call(prompt).getResult().getOutput();
+        return Objects.requireNonNull(chatModel.call(prompt).getResult()).getOutput();
     }
 }

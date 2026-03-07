@@ -39,9 +39,9 @@ public class GenAIController {
     public List<String> generateImage(HttpServletResponse response,
                                       @RequestParam String prompt,
                                       @RequestParam(defaultValue = "hd") String quality,
-                                      @RequestParam(defaultValue = "1") String n,
-                                      @RequestParam(defaultValue = "1024") String width,
-                                      @RequestParam(defaultValue = "1024") String height) throws IOException {
+                                      @RequestParam(defaultValue = "1") int n,
+                                      @RequestParam(defaultValue = "1024") int width,
+                                      @RequestParam(defaultValue = "1024") int height) throws IOException {
         ImageResponse images = imageService.generateImage(prompt, quality, n, width, height);
 
         return images.getResults()

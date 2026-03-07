@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class ImageService{
     private final OpenAiImageModel openAiImageModel;
 
-    public ImageResponse generateImage(String prompt){
+    public ImageResponse generateImage(String prompt, String quality, String n, String width, String height){
         return openAiImageModel.call(
                 new ImagePrompt(prompt,
                         OpenAiImageOptions.builder()

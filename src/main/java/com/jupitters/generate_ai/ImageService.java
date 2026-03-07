@@ -17,7 +17,7 @@ public class ImageService{
                 new ImagePrompt(prompt,
                         OpenAiImageOptions.builder()
                                 //.model("dall-e-2")
-                                .quality("hd")
+                                .quality(quality)
                                 .N(n)
                                 .height(width)
                                 .width(height)

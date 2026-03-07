@@ -19,8 +19,8 @@ public class ImageService{
                                 //.model("dall-e-2")
                                 .quality(quality)
                                 .N(n)
-                                .height(width)
-                                .width(height)
+                                .height(height)
+                                .width(width)
                                 .build())
         );
     }

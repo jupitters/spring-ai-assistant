@@ -30,6 +30,6 @@ public class RecipeService {
         );
 
         Prompt prompt = promptTemplate.create(params);
-        return Objects.requireNonNull(chatModel.call(prompt).getResult()).getOutput();
+        return Objects.requireNonNull(chatModel.call(prompt).getResult()).getOutput().toString();
     }
 }
